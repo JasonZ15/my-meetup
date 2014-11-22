@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -33,6 +34,7 @@ angular
       })
       .when('/meetings', {
         templateUrl: 'views/meetings.html',
+        controller: 'MeetingsCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -42,3 +44,6 @@ angular
         redirectTo: '/login'
       });
   });
+
+/* exported FIREBASE_URL */
+var FIREBASE_URL = 'https://popping-heat-7297.firebaseio.com/meetings';

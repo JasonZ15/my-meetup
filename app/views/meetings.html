@@ -1,7 +1,16 @@
-<h1>here is your meetings and links</h1>
-<ul>
-  <li><a href="">Lorem ipsum dolor.</a></li>
-  <li><a href="">Lorem ipsum dolor.</a></li>
-  <li><a href="">Lorem ipsum dolor.</a></li>
-  <li><a href="">Lorem ipsum dolor.</a></li>
-</ul>
+<section class="meetings">
+
+  <form name="myform"
+    ng-submit="addMeeting()"
+    novalidate>
+    <input type="text" name="mymeetingname" placeholder="Meeting Name"
+      ng-model="meetingname" ng-required="true">
+    <button type="submit"
+      ng-disabled="myform.mymeetingname.$invalid">+</button>
+  </form>
+
+  <h2>Your Meetings</h2>
+    <div class="meeting" ng-repeat="(key, meeting) in meetings"><!--always as key: value pair-->
+      <span>{{meeting.name}}</span> <button type="submit" ng-click="deleteMeeting(key)">-</button>
+    </div>
+</section>
