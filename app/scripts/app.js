@@ -18,6 +18,9 @@ angular
     'ngTouch',
     'firebase'
   ])
+  .constant(
+    'FIREBASE_URL', 'https://popping-heat-7297.firebaseio.com/meetings'
+  )
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -44,6 +47,3 @@ angular
         redirectTo: '/login'
       });
   });
-
-/* exported FIREBASE_URL */
-var FIREBASE_URL = 'https://popping-heat-7297.firebaseio.com/meetings';

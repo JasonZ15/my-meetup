@@ -8,7 +8,7 @@
  * Controller of the myMeetupApp
  */
 angular.module('myMeetupApp').controller('MeetingsCtrl',
-  function($scope, $firebase) {
+  function($scope, FIREBASE_URL, $firebase) {
 
     //connect to a firebase database
     var ref = new Firebase(FIREBASE_URL);

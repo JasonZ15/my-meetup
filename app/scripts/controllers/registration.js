@@ -8,7 +8,7 @@
  * Controller of the myMeetupApp
  */
 angular.module('myMeetupApp').controller('RegistrationCtrl',
-  function($scope, $location){ //different service dependencies. scope can access the variables in the view from the controller
+  function($scope, FIREBASE_URL, $location){ //different service dependencies. scope can access the variables in the view from the controller
 
     var ref = new Firebase(FIREBASE_URL);
 
