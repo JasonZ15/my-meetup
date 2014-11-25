@@ -8,23 +8,18 @@
  * Controller of the myMeetupApp
  */
 angular.module('myMeetupApp').controller('RegistrationCtrl',
-  function($scope, FIREBASE_URL, $location){ //different service dependencies. scope can access the variables in the view from the controller
+  function($scope, $location, Authentication){ //different service dependencies. scope can access the variables in the view from the controller
 
-    var ref = new Firebase(FIREBASE_URL);
 
     $scope.login = function() {
-      ref.authWithPassword({
-        email: $scope.user.email,
-        password: $scope.user.password
-      }, function(error, authData) {
-        if(error === null) {
-          $location.path('/meetings');
-          $scope.$apply();
-        } else {
-          $scope.message = error.toString();
-          $scope.$apply();
-        }
+
+      Authentication.login($scope.user).then(function(user) {
+        $location.path('/meetings');
+        console.log('welcome ' + user.uid);
+      }, function(error) {
+        $scope.message = error.toString();
       });
+
     }; //login
 
     $scope.register = function() {
