@@ -2,6 +2,7 @@
   <form name="myform" ng-submit="register()" novalidate>
     <h1>Hey, let's get you registered</h1>
 
+    <p ng-show="message">{{message}}</p>
     <input type="firstname" name="firstname" placeholder="First Name" autofocus
       ng-model="user.firstname" ng-required="true">
     <p class="error validationerror"

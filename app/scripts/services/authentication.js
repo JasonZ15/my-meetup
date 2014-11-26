@@ -7,11 +7,16 @@
 * # Authentication
 * service of the myMeetupApp
 */
-angular.module('myMeetupApp').factory('Authentication', function(FIREBASE_URL, $firebase, $firebaseAuth){
+angular.module('myMeetupApp').factory('Authentication',
+function(FIREBASE_URL, $firebase, $firebaseAuth){
+
     var ref = new Firebase(FIREBASE_URL);
     var authObj = $firebaseAuth(ref);
 
-    var myObject = {
+    return {
+      register : function(user) {
+        return authObj.$createUser(user.email, user.password);
+      }, //register
       login : function(user) {
         return authObj.$authWithPassword({
           email: user.email,
@@ -20,8 +25,7 @@ angular.module('myMeetupApp').factory('Authentication', function(FIREBASE_URL, $
       }, //login
       logout: function() {
         authObj.$unauth();
-      }
+      } //logout
     };
 
-    return myObject;
 });
