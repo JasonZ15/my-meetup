@@ -9,11 +9,12 @@
 */
 
 angular.module('myMeetupApp').controller('StatusCtrl',
-  function($scope, $firebaseAuth, FIREBASE_URL, Authentication) {
+  function($scope, $location, $firebaseAuth, FIREBASE_URL, Authentication) {
 
     $scope.logout = function() {
 
       Authentication.logout();
+      $location.path('/login');
 
     };
 

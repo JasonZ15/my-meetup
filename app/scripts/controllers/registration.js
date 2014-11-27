@@ -23,13 +23,7 @@ angular.module('myMeetupApp').controller('RegistrationCtrl',
     $scope.register = function() {
 
       Authentication.register($scope.user).then(function(user) {
-
-        Authentication.login($scope.user).then(function(authData) {
           $location.path('/meetings');
-        }).catch(function(error) {
-          console.error("Error: ", error);
-        });
-
       }, function(error) {
         $scope.message = error.toString();
       });

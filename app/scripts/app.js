@@ -19,7 +19,7 @@ angular
     'firebase'
   ])
   .constant(
-    'FIREBASE_URL', 'https://popping-heat-7297.firebaseio.com/meetings'
+    'FIREBASE_URL', 'https://popping-heat-7297.firebaseio.com/'
   )
   .config(function ($routeProvider) {
     $routeProvider

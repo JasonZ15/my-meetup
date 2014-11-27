@@ -15,7 +15,27 @@ function(FIREBASE_URL, $firebase, $firebaseAuth){
 
     return {
       register : function(user) {
-        return authObj.$createUser(user.email, user.password);
+        return authObj.$createUser(user.email, user.password)
+        .then(function() {
+          console.log('User Created!');
+          return authObj.$authWithPassword({
+            email: user.email,
+            password: user.password
+          }).then(function(regUser) {
+            var ref = new Firebase(FIREBASE_URL + 'users');
+            var firebaseUsers = $firebase(ref);
+
+            var userInfo = {
+              date: Firebase.ServerValue.TIMESTAMP,// Firebase is js. $firebase is angular
+              regUser: regUser.uid,
+              firstname: user.firstname,
+              lastname: user.lastname,
+              email: user.email
+            };
+
+            firebaseUsers.$set(regUser.uid, userInfo);
+          });
+        });
       }, //register
       login : function(user) {
         return authObj.$authWithPassword({
