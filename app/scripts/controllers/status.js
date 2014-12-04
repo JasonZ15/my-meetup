@@ -32,6 +32,7 @@ angular.module('myMeetupApp').controller('StatusCtrl',
       } else {
         console.log('Logged out');
         $rootScope.currentUser = null;
+        $rootScope.noUser = true;
       }
     });//onAuth listening to login status
   });
