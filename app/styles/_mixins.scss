@@ -1,0 +1,10 @@
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  } //before, after. & is point to parent
+  &:after {
+    clear: both;
+  } //after
+}//clearfix

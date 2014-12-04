@@ -9,22 +9,29 @@
 */
 
 angular.module('myMeetupApp').controller('StatusCtrl',
-  function($scope, $location, $firebaseAuth, FIREBASE_URL, Authentication) {
+  function($rootScope, $scope, $location, $firebase, $firebaseAuth, FIREBASE_URL, Authentication) {
 
     $scope.logout = function() {
 
       Authentication.logout();
       $location.path('/login');
 
-    };
+    }; //logout
 
     var ref = new Firebase(FIREBASE_URL);
     var authObj = $firebaseAuth(ref);
     authObj.$onAuth(function(authData) {
       if (authData) {
         console.log('Logged in as:', authData.password.email);
+        var ref = new Firebase(FIREBASE_URL + 'users/' + authData.uid);
+        var user = $firebase(ref).$asObject();
+        user.$loaded().then(function(){ //$loaded() is a angularfire function
+          console.log(user);
+          $rootScope.currentUser = user;
+        });
       } else {
         console.log('Logged out');
+        $rootScope.currentUser = null;
       }
-    });
+    });//onAuth listening to login status
   });

@@ -1,16 +1,24 @@
 <section class="meetings">
 
-  <form name="myform"
-    ng-submit="addMeeting()"
-    novalidate>
-    <input type="text" name="mymeetingname" placeholder="Meeting Name"
-      ng-model="meetingname" ng-required="true">
-    <button type="submit"
-      ng-disabled="myform.mymeetingname.$invalid">+</button>
-  </form>
+  <div ng-hide="currentUser" class="sorry">
+    <h1>Sorry</h1>
+    <p>Only registered user can create and manage meetings.</p>
+    <p>Please <a ng-href="#/register">Register</a> or <a ng-href="#/login">Login</a>.</p>
+  </div>
 
-  <h2>Your Meetings</h2>
+  <div ng-show="currentUser" class="meetings">
+    <form name="myform"
+      ng-submit="addMeeting()"
+      novalidate>
+      <input type="text" name="mymeetingname" placeholder="Meeting Name"
+        ng-model="meetingname" ng-required="true">
+      <button type="submit"
+        ng-disabled="myform.mymeetingname.$invalid">+</button>
+    </form>
+
+    <h2>Your Meetings</h2>
     <div class="meeting" ng-repeat="(key, meeting) in meetings"><!--always as key: value pair-->
       <span>{{meeting.name}}</span> <button type="submit" ng-click="deleteMeeting(key)">-</button>
     </div>
+  </div>
 </section>

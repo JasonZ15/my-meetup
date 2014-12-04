@@ -11,7 +11,6 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/style.css">
     <!-- endbuild -->
   </head>
@@ -23,17 +22,13 @@
     <!-- Add your site or application content here -->
     <header>
       <nav class="cf" ng-include="'views/nav.html'"></nav>
-    </header>
-    <div class="container">
-
-
-      <div ng-controller="StatusCtrl">
-        <span>{{ userEmail }}</span>
-        <a href ng-click="logout()">Logout</a>
+      <div class="userdock" ng-include="'views/user-status.html'">
+        
       </div>
+    </header>
+
+    <div class="container">
       <div ng-view=""></div>
-
-
     </div>
 
 
