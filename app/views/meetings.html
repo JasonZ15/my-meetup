@@ -1,24 +1,24 @@
 <section class="meetings">
 
-  <div ng-show="noUser" class="sorry">
+  <div ng-show="noUser" class="msg sorry">
     <h1>Sorry</h1>
     <p>Only registered user can create and manage meetings.</p>
     <p>Please <a ng-href="#/register">Register</a> or <a ng-href="#/login">Login</a>.</p>
   </div>
 
   <div ng-show="currentUser" class="meetings">
+    <h1 ng-if="howManyMeetings>0">Your Meetings</h1>
     <form name="myform"
-      ng-submit="addMeeting()"
-      novalidate>
+    ng-submit="addMeeting()" novalidate>
       <input type="text" name="mymeetingname" placeholder="Meeting Name"
-        ng-model="meetingname" ng-required="true">
+      ng-model="meetingname" ng-required="true">
       <button type="submit"
-        ng-disabled="myform.mymeetingname.$invalid">+</button>
+      ng-disabled="myform.mymeetingname.$invalid">+</button>
     </form>
-
-    <h2>Your Meetings</h2>
     <div class="meeting" ng-repeat="(key, meeting) in meetings"><!--always as key: value pair-->
+      <a class="btn btn-checkin" ng-href="#/checkins/{{currentUser.regUser}}/{{key}}">Check in</a>
       <span>{{meeting.name}}</span> <button type="submit" ng-click="deleteMeeting(key)">-</button>
     </div>
   </div>
+
 </section>

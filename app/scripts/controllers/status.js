@@ -20,7 +20,7 @@ angular.module('myMeetupApp').controller('StatusCtrl',
 
     var ref = new Firebase(FIREBASE_URL);
     var authObj = $firebaseAuth(ref);
-    authObj.$onAuth(function(authData) {
+    authObj.$onAuth(function(authData) { //onAuth does some kind of watch
       if (authData) {
         console.log('Logged in as:', authData.password.email);
         var ref = new Firebase(FIREBASE_URL + 'users/' + authData.uid);
