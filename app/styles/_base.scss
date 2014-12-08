@@ -5,7 +5,7 @@ body {
 }
 
 #{headings()} {
-  font: $headFont;
+  font-family: $fontFamily;
   color: $headColor;
   font-weight: $bold;
 }
