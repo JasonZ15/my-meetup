@@ -17,7 +17,7 @@ angular.module('myMeetupApp').controller('MeetingsCtrl',
       if (authData) {
 
         //connect to a firebase database
-        var ref = new Firebase(FIREBASE_URL + 'users' + authData.uid + 'meetings');
+        var ref = new Firebase(FIREBASE_URL + 'users/' + authData.uid + '/meetings');
 
         // create an AngularFire reference to the data. we have an object to use.
         var meetings = $firebase(ref);
