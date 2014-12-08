@@ -28,6 +28,7 @@ angular.module('myMeetupApp').controller('StatusCtrl',
         user.$loaded().then(function(){ //$loaded() is a angularfire function
           console.log(user);
           $rootScope.currentUser = user;
+          $rootScope.noUser = null;
         });
       } else {
         console.log('Logged out');

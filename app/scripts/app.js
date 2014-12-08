@@ -39,6 +39,14 @@ angular
         templateUrl: 'views/meetings.html',
         controller: 'MeetingsCtrl'
       })
+      .when('/checkins/:uId/:mId', {
+        templateUrl: 'views/checkins.html',
+        controller: 'CheckinsCtrl'
+      })
+      .when('/checkins/:uId/:mId/checkinsList', {
+        templateUrl: 'views/checkinslist.html',
+        controller: 'CheckinsCtrl'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
