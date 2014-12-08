@@ -8,7 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,14 +22,12 @@
 
     <!-- Add your site or application content here -->
     <header>
-      <nav class="cf" ng-include="'views/nav.html'"></nav>
-      <div class="userdock" ng-include="'views/user-status.html'"></div>
+      <nav class="navbar navbar-default" ng-include="'views/nav.html'" role="navigation"></nav>
+      
     </header>
 
     <main>
-      <div class="container">
         <div ng-view=""></div>
-      </div>
     </main>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
