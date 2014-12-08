@@ -16,8 +16,9 @@
 
 //Core Partial
 @import "variables";
-@import "base";
 @import "mixins.scss";
+@import "base";
+@import "layout";
 
 //Import Modules
 @import "modules/nav.scss";
