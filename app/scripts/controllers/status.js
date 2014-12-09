@@ -27,6 +27,7 @@ angular.module('myMeetupApp').controller('StatusCtrl',
         var user = $firebase(ref).$asObject();
         user.$loaded().then(function(){ //$loaded() is a angularfire function
           console.log(user);
+          $rootScope.howManyMeetings = Object.keys(user.meetings).length;
           $rootScope.currentUser = user;
           $rootScope.noUser = null;
         });
