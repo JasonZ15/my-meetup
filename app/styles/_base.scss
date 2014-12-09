@@ -1,13 +1,17 @@
 body {
-  font: $mainFont;
+  font-family: $fontFamily;
   background: $backgroundColor;
   color: $typeDefault;
 }
 
 #{headings()} {
-  font: $headFont;
+  font-family: $fontFamily;
   color: $headColor;
   font-weight: $bold;
+}
+
+a {
+  color: $red;
 }
 
 strong {

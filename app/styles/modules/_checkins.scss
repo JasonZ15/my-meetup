@@ -1,0 +1,6 @@
+.register {
+  .form-control {
+    @include span(3 of 12);
+    margin: 0 4px 8px 0;
+  }
+}

@@ -1,7 +1,7 @@
 header {
-  @include container;
+  @include container($wide);
 }
 
 main {
-  @include container;
+  @include container($wide);
 }

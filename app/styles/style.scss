@@ -1,23 +1,2 @@
 // style.scss
 // ==============
-
-//Compass imports
-@import "compass";
-@import "compass/reset";
-
-//External Libraries
-@import "susy";
-@import "breakpoint";
-
-//Core Partial
-@import "variables";
-@import "mixins";
-@import "base";
-@import "layout";
-
-//Import Modules
-@import "modules/nav";
-
-
-//External Import
-@import "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
