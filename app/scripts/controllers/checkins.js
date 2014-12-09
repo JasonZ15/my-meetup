@@ -31,4 +31,8 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
 
   $scope.checkins = $firebase(ref).$asArray();
 
+  $scope.deleteCheckin = function(id) {
+    $firebase(ref).$remove(id);
+  };
+
 });

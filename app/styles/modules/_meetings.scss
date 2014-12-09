@@ -1,9 +1,12 @@
 .meetings-content {
   form {
-    margin: 0 0 12px;  
+    margin: 0 0 12px;
   }
 
   .panel.meeting {
     padding: 8px 6px;
+    .btn-group {
+      margin: 0 3px 0;
+    }
   }
 }
