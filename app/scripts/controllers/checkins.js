@@ -21,6 +21,7 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
     var checkinData = {
       firstname: $scope.user.firstname,
       lastname: $scope.user.lastname,
+      fullname:  $scope.user.firstname + ' ' + $scope.user.lastname,
       email: $scope.user.email,
       date: Firebase.ServerValue.TIMESTAMP
     }
@@ -35,4 +36,21 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
     $firebase(ref).$remove(id);
   };
 
+  $scope.order = 'firstname';
+  $scope.selectValue = function(value) {
+    $scope.order = value;
+  };
+  $scope.direction = '';
+  $scope.directionValue = function(value) {
+    $scope.direction = value;
+  };
+
+  $('.search-notification').hide();
+  $('.checkin-user-list').bind('DOMSubtreeModified', function() {
+    if($('.checkin-user').length > 0) {
+      $('.search-notification').hide();
+    } else {
+      $('.search-notification').show();
+    }
+  });
 });

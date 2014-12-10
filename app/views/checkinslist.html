@@ -3,8 +3,38 @@
     <h1>Check-ins for {{meetingName}} <small>Here's a list of your latest check-ins</small></h1>
   </div>
   <div class="panel panel-default">
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat="checkin in checkins">
+    <div class="panel-heading">
+      <div class="input-group search">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+        <input class="form-control" type="text" ng-model="query" placeholder="Search for Users">
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="btn-group btn-group-xs sort" data-toggle="buttons">
+        <label class="btn btn-default" disabled>
+          Sort By
+        </label>
+        <label class="btn btn-info active" ng-click="selectValue('firstname')">
+          <input type="radio" autocomplete="off"> First Name
+        </label>
+        <label class="btn btn-info" ng-click="selectValue('lastname')">
+          <input type="radio" autocomplete="off"> Last Name
+        </label>
+        <label class="btn btn-info" ng-click="selectValue('date')">
+          <input type="radio" autocomplete="off"> Date
+        </label>
+      </div>
+      <div class="btn-group btn-group-xs sort" data-toggle="buttons">
+        <label class="btn btn-info active" ng-click="directionValue('')">
+          <input type="radio" autocomplete="off"> ASC
+        </label>
+        <label class="btn btn-info" ng-click="directionValue('reverse')">
+          <input type="radio" autocomplete="off"> DESC
+        </label>
+      </div>
+    </div>
+    <ul class="list-group checkin-user-list">
+      <li class="list-group-item checkin-user" ng-repeat="checkin in checkins | orderBy: order : direction | filter: {fullname: query}">
         <div class="info">
           <div class="btn-group btn-group-xs pull-right">
             <button class="btn btn-default" ng-click="deleteCheckin(checkin.$id)" type="button">
@@ -15,6 +45,7 @@
           <p class="date">{{checkin.date | date:"MMM d, yy h:mm a"}}</p>
         </div>
       </li>
+      <li class="list-group-item search-notification">No matching user found.</li>
     </ul>
   </div>
 </section>
