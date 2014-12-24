@@ -1,6 +1,6 @@
 <section class="register">
   <div class="page-header">
-    <h1>Check-in <small>Fill out this form to check-in to our meeting or go <a ng-href="#/meetings">back to meetings</a></small></h1>
+    <h1>{{meetingName}} <small>Fill out this form to check-in <span ng-show="currentUser">or go <a ng-href="#/meetings">back to my meetings</a></span></small><a class="btn btn-default pull-right" ng-href="#/checkins/{{whichUser}}/{{whichMeeting}}/checkinsList"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></h1>
   </div>
   <form name="myform" ng-submit="addCheckin()" novalidate>
     <p ng-show="message">{{message}}</p>
@@ -23,7 +23,7 @@
       placeholder="{{myform.email.$invalid && myform.email.$touched ? 'Must be a valid email' : 'Email' }}"
       ng-model="user.email" ng-required="true">
 
-    <button type="submit" class="btn btn-default"
+    <button type="submit" class="btn btn-primary"
       ng-disabled="myform.$invalid">
       Check-in</button>
   </form>

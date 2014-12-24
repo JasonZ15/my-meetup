@@ -1,6 +1,6 @@
 <section class="checkins-list">
   <div class="page-header">
-    <h1>Check-ins for {{meetingName}} <small>Here's a list of your latest check-ins</small></h1>
+    <h1>{{meetingName}} <small>Here's a list of the latest check-ins<span ng-show="currentUser">. <a ng-href="#/meetings">Go back to my meetings.</a></span></small><a class="btn btn-default pull-right" ng-href="#/checkins/{{whichUser}}/{{whichMeeting}}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></h1>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -32,11 +32,25 @@
           <input type="radio" autocomplete="off"> DESC
         </label>
       </div>
+      <div class="btn-group btn-group-xs btn-raffle" ng-show="currentUser&&!recordId">
+        <label class="btn btn-default" disabled>
+          Raffle
+        </label>
+        <button type="button" class="btn btn-xs btn-success"
+          ng-click="pickRandom()"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></button>
+      </div>
+      <div class="btn-group btn-group-xs btn-raffle" ng-show="currentUser&&recordId">
+        <label class="btn btn-default" disabled>
+          Raffle
+        </label>
+        <button type="button" class="btn btn-xs btn-warning"
+          ng-click="recordId=''"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+      </div>
     </div>
     <ul class="list-group checkin-user-list">
-      <li class="list-group-item checkin-user" ng-repeat="checkin in checkins | orderBy: order : direction | filter: {fullname: query}">
+      <li class="list-group-item checkin-user" ng-repeat="checkin in checkins | orderBy: order : direction | filter: {fullname: query, $id: recordId}">
         <div class="info">
-          <div class="btn-group btn-group-xs pull-right">
+          <div class="btn-group btn-group-xs pull-right" ng-show="currentUser">
             <button class="btn btn-default" ng-click="deleteCheckin(checkin.$id)" type="button">
               <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
