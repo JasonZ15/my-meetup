@@ -47,7 +47,7 @@
           ng-click="recordId=''"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
       </div>
     </div>
-    <ul class="list-group checkin-user-list">
+    <ul class="list-group checkin-user-list" search-notification>
       <li class="list-group-item checkin-user" ng-repeat="checkin in checkins | orderBy: order : direction | filter: {fullname: query, $id: recordId}">
         <div class="info">
           <div class="btn-group btn-group-xs pull-right" ng-show="currentUser">

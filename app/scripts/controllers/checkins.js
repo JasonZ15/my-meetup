@@ -35,7 +35,9 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
   };
 
   var checkinsList = $firebase(ref).$asArray();
-  $scope.checkins = checkinsList;
+  checkinsList.$loaded().then(function() {
+    $scope.checkins = checkinsList;
+  });
 
   $scope.deleteCheckin = function(id) {
     $firebase(ref).$remove(id);
@@ -58,12 +60,4 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
     $scope.recordId = checkinsList.$keyAt(whichRecord);
   }
 
-  $('.search-notification').hide();
-  $('.checkin-user-list').bind('DOMSubtreeModified', function() {
-    if($('.checkin-user').length > 0) {
-      $('.search-notification').hide();
-    } else {
-      $('.search-notification').show();
-    }
-  });
 });
