@@ -72,7 +72,8 @@
               <li ng-repeat="(key, award) in checkin.awards">
                 <div class="award">
                   {{award.name}}
-                  <button class="btn btn-xs btn-default" ng-click="deleteLove(checkin, key)" type="button">
+                  <button class="btn btn-xs btn-default"
+                    ng-click="deleteLove(checkin, key)" type="button" confirm-action>
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                   </button>
                 </div>
