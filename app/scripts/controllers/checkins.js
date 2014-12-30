@@ -63,4 +63,26 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
   $scope.showLove = function(myCheckin) {
     myCheckin.show = !myCheckin.show;
   }
+
+  $scope.giveLove = function(myCheckin, myGift) {
+    var refLove = new Firebase(FIREBASE_URL + 'users/' +
+      $scope.whichUser + '/meetings/' +
+      $scope.whichMeeting + '/checkins/' + myCheckin.$id + '/awards');
+    var checkinsObj = $firebase(refLove);
+
+    var myData = {
+      name: myGift,
+      date: Firebase.ServerValue.TIMESTAMP
+    };
+
+    checkinsObj.$push(myData);
+  }
+
+  $scope.deleteLove = function(myCheckin, myGift) {
+    var refLove = new Firebase(FIREBASE_URL + 'users/' +
+      $scope.whichUser + '/meetings/' +
+      $scope.whichMeeting + '/checkins/' + myCheckin.$id + '/awards');
+    var checkinsObj = $firebase(refLove);
+    checkinsObj.$remove(myGift);
+  }
 });

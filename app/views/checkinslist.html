@@ -64,14 +64,24 @@
                   ng-required="true"
                   placeholder="What are you giving them?">
                 <span class="input-group-btn">
-                  <button type="submit" class="btn" ng-disabled="myForm.giftText.$invalid"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                  <button type="submit" class="btn btn-success" ng-disabled="myForm.giftText.$invalid"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
                 </span>
               </div>
             </form>
+            <ul class="awardslist">
+              <li ng-repeat="(key, award) in checkin.awards">
+                <div class="award">
+                  {{award.name}}
+                  <button class="btn btn-xs btn-default" ng-click="deleteLove(checkin, key)" type="button">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </li>
+            </ul>
           </div>
           <div class="col-md-4">
             <div class="btn-group btn-group-xs pull-right" ng-show="currentUser">
-              <button class="btn btn-success" ng-click="showLove(checkin)" type="button">
+              <button class="btn btn-success btn-love" ng-click="showLove(checkin)" type="button">
                 <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
               </button>
               <button class="btn btn-default" ng-click="deleteCheckin(checkin.$id)" type="button">
