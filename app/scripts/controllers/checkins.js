@@ -60,4 +60,7 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
     $scope.recordId = checkinsList.$keyAt(whichRecord);
   }
 
+  $scope.showLove = function(myCheckin) {
+    myCheckin.show = !myCheckin.show;
+  }
 });
