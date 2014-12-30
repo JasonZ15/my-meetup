@@ -51,34 +51,32 @@
       <li class="list-group-item checkin-user"
         ng-class="{'expanded': checkin.show === true}"
         ng-repeat="checkin in checkins | orderBy: order : direction | filter: {fullname: query, $id: recordId}">
-        <div class="container">
-          <div class="info row">
-            <div class="col-md-3">
-              <h3>{{checkin.firstname}} {{checkin.lastname}}</h3>
-              <p class="date">{{checkin.date | date:"MMM d, yy h:mm a"}}</p>
-            </div>
-            <div class="col-md-5 give-gift">
-              <form name="myForm" ng-show="checkin.show" ng-submit="giveLove(checkin, checkin.giftText)" novalidate>
-                <div class="input-group">
-                  <input type="text" class="form-control" name="giftText"
-                    ng-model="checkin.giftText"
-                    ng-required="true"
-                    placeholder="What are you giving them?">
-                  <span class="input-group-btn">
-                    <button type="submit" class="btn" ng-disabled="myForm.giftText.$invalid"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                  </span>
-                </div>
-              </form>
-            </div>
-            <div class="col-md-4">
-              <div class="btn-group btn-group-xs pull-right" ng-show="currentUser">
-                <button class="btn btn-success" ng-click="showLove(checkin)" type="button">
-                  <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
-                </button>
-                <button class="btn btn-default" ng-click="deleteCheckin(checkin.$id)" type="button">
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </button>
+        <div class="info row">
+          <div class="col-md-3">
+            <h3>{{checkin.firstname}} {{checkin.lastname}}</h3>
+            <p class="date">{{checkin.date | date:"MMM d, yy h:mm a"}}</p>
+          </div>
+          <div class="col-md-5 give-gift">
+            <form name="myForm" ng-show="checkin.show" ng-submit="giveLove(checkin, checkin.giftText)" novalidate>
+              <div class="input-group">
+                <input type="text" class="form-control" name="giftText"
+                  ng-model="checkin.giftText"
+                  ng-required="true"
+                  placeholder="What are you giving them?">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn" ng-disabled="myForm.giftText.$invalid"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                </span>
               </div>
+            </form>
+          </div>
+          <div class="col-md-4">
+            <div class="btn-group btn-group-xs pull-right" ng-show="currentUser">
+              <button class="btn btn-success" ng-click="showLove(checkin)" type="button">
+                <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+              </button>
+              <button class="btn btn-default" ng-click="deleteCheckin(checkin.$id)" type="button">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
             </div>
           </div>
         </div>

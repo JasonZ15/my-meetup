@@ -1,0 +1,37 @@
+.checkins-list {
+  .panel-body {
+    .btn-raffle {
+      margin-left: 6px;
+    }
+  }
+  .checkin-user-list {
+    li {
+      form {
+        opacity: 0;
+      }
+
+      &.expanded-add, &.expanded-remove {
+        @include transition-property(all);
+        @include transition-duration(0.75s);
+      }
+
+      &.expanded-add form, &.expanded-remove form {
+        @include transition-property(opacity);
+        @include transition-duration(0.1s);
+      }
+
+      &.expanded {
+        background-color: #A9E7A9;
+
+        form {
+          opacity: 1;
+        }
+        .btn-success {
+          background-color: #fff;
+          border-color: #ccc;
+          color: #5cb85c;
+        }
+      }
+    }
+  }
+}
