@@ -1,9 +1,11 @@
 <section class="meetings">
 
-  <div ng-show="noUser" class="msg sorry">
-    <h1>Sorry</h1>
-    <p>Only registered user can create and manage meetings.</p>
-    <p>Please <a ng-href="#/register">Register</a> or <a ng-href="#/login">Login</a>.</p>
+  <div ng-show="noUser" class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4 title">
+      <h1>Sorry</h1>
+      <p>Only registered user can create and manage meetings.</p>
+      <p>Please <a ng-href="#/register">Register</a> or <a ng-href="#/login">Login</a>.</p>
+    </div>
   </div>
 
   <div class="meetings-content" ng-show="currentUser">
