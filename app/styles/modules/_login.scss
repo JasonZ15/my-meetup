@@ -1,0 +1,11 @@
+.login, .register {
+  .row {
+    .content {
+      > h1 { text-align: center; }
+      > p { text-align: center; }
+      .form-control {
+        margin: 4px 0;
+      }
+    }
+  }
+}

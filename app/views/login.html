@@ -1,26 +1,27 @@
 <section class="login">
-  <form name="myform" ng-submit="login()" novalidate>
-    <h1>Hi there!</h1>
-    <p>Log in to access the awesomeness!</p>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4 content">
+      <h1>Hi there!</h1>
+      <p>Log in to access the awesomeness!</p>
+      <form name="myform" ng-submit="login()" novalidate>
+        <p class="alert alert-danger" ng-show="message">{{message}}</p>
 
-    <p ng-show="message">{{message}}</p>
+        <input class="form-control"
+          ng-class="{'alert alert-danger': myform.email.$invalid && myform.email.$touched}"
+          placeholder="{{myform.email.$invalid && myform.email.$touched ? 'Must be a valid email' : 'Email' }}"
+          type="email" name="email"
+          ng-model="user.email" ng-required="true">
 
-    <input type="email" name="email" placeholder="Email"
-      ng-model="user.email" ng-required="true">
-    <p class="error validationerror"
-      ng-show="myform.email.$invalid && myform.email.$touched">
-      Must be a valid email</p>
+        <input class="form-control"
+          ng-class="{'alert alert-danger': myform.password.$invalid && myform.password.$touched}"
+          placeholder="{{myform.password.$invalid && myform.password.$touched ? 'Must be a valid password' : 'Password' }}"
+          type="password" name="password"
+          ng-model="user.password" ng-required="true">
 
-    <input type="password" name="password" placeholder="Password"
-      ng-model="user.password" ng-required="true">
-    <p class="error validationerror"
-      ng-show="myform.password.$invalid && myform.password.$touched">
-      Must be a valid password</p>
-
-    <button type="submit" class="btn"
-      ng-disabled="myform.$invalid">
-      Login</button>
-
-    <p>or <a href="#/register">Register</a></p>
-  </form>
+        <button type="submit" class="btn btn-primary"
+          ng-disabled="myform.$invalid">
+          Login</button> or <a href="#/register">Register</a></p>
+      </form>
+    </div>
+  </div>
 </section>
