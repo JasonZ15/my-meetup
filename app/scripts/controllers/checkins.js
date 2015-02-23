@@ -20,7 +20,6 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
     $scope.meetingName = meetingObj.name;
   });
 
-
   $scope.addCheckin = function() {
     var checkinData = {
       firstname: $scope.user.firstname,
@@ -28,9 +27,9 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
       fullname:  $scope.user.firstname + ' ' + $scope.user.lastname,
       email: $scope.user.email,
       date: Firebase.ServerValue.TIMESTAMP
-    }
+    };
     $firebase(ref).$push(checkinData).then(function() {
-      $location.path('/checkins/' + $scope.whichUser + '/' + $scope.whichMeeting + '/checkinsList')
+      $location.path('/checkins/' + $scope.whichUser + '/' + $scope.whichMeeting + '/checkinsList');
     });
   };
 
@@ -56,13 +55,13 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
     var whichRecord = Math.round(Math.random() * checkinsList.length);
     while (whichRecord === checkinsList.length) {
       whichRecord = Math.round(Math.random() * checkinsList.length);
-    };
+    }
     $scope.recordId = checkinsList.$keyAt(whichRecord);
-  }
+  };
 
   $scope.showLove = function(myCheckin) {
     myCheckin.show = !myCheckin.show;
-  }
+  };
 
   $scope.giveLove = function(myCheckin, myGift) {
     var refLove = new Firebase(FIREBASE_URL + 'users/' +
@@ -76,13 +75,14 @@ function($scope, $location, $routeParams, FIREBASE_URL, $firebase) {
     };
 
     checkinsObj.$push(myData);
-  }
+  };
 
   $scope.deleteLove = function(myCheckin, myGift) {
     var refLove = new Firebase(FIREBASE_URL + 'users/' +
       $scope.whichUser + '/meetings/' +
       $scope.whichMeeting + '/checkins/' + myCheckin.$id + '/awards');
     var checkinsObj = $firebase(refLove);
+
     checkinsObj.$remove(myGift);
-  }
+  };
 });

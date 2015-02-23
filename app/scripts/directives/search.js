@@ -12,5 +12,5 @@ angular.module('myMeetupApp').directive('searchNotification', function() {
         }
       });
     }
-  }
+  };
 });
