@@ -1,11 +1,10 @@
 # Meeting Management App
-Angular + Firebase Data-Driven App to manage meetings
+Angular + Firebase data-driven app runs on Node.js server
 
 - A web application that can handle multiple users, registration, and real-time data
 - Angular controllers, connect a Firebase database, and read, push, and delete data from that database
 
-Process:
-- Installing Git and Node.js
+Development includes:
 - Installing AngularJS and its models
 - Creating modules and routes
 - Working with controllers
